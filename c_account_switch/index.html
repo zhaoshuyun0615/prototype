@@ -11,6 +11,9 @@
   <script>
     window.PROTOTYPE_REQUIREMENTS_CONFIG = {
       storageKey: 'c-account-switch-unified-requirements',
+      dataUrl: 'requirements.json',
+      dataFileName: 'requirements.json',
+      dataSavePath: 'c_account_switch/requirements.json',
       codePrefix: 'REQ-CAS',
       boardTitle: '账号切换需求卡片',
       boardDescription: '统一记录所有页面、模块对应的需求描述，并可点击定位到绑定位置。',
@@ -75,7 +78,7 @@
             </div>
             <div class="requirement-head-actions">
               <button class="requirement-add" type="button"><i class="fa-solid fa-plus"></i>新增需求</button>
-              <button class="requirement-pick" type="button"><i class="fa-solid fa-crosshairs"></i>点选模块</button>
+              <button class="requirement-pick" type="button"><i class="fa-solid fa-crosshairs"></i>点选元素</button>
             </div>
           </div>
           <div class="requirement-tools">

@@ -1,0 +1,65 @@
+{
+  "updatedAt": "2026-05-20T15:41:10.301Z",
+  "requirements": [
+    {
+      "id": "req-cas-01",
+      "code": "REQ-CAS-01",
+      "title": "切换账号入口可感知",
+      "description": "个人中心手机号旁展示“切换账号”入口，当用户点击后进入切换登录手机号弹窗。",
+      "pageId": "c01",
+      "moduleId": "switch-button",
+      "moduleTitle": "切换账号入口",
+      "moduleSelector": ".account-switch-chip",
+      "elementTitle": "",
+      "elementSelector": ""
+    },
+    {
+      "id": "req-cas-02",
+      "code": "REQ-CAS-02",
+      "title": "微信手机号授权组件",
+      "description": "用户在切换登录手机号时，通过微信官方手机号能力选择并验证当前微信可用手机号，用于匹配并切换会员账号。",
+      "pageId": "c02",
+      "moduleId": "phone-sheet",
+      "moduleTitle": "手机号选择弹层",
+      "moduleSelector": ".wechat-phone-sheet",
+      "elementTitle": "",
+      "elementSelector": ""
+    },
+    {
+      "id": "req-cas-03",
+      "code": "REQ-CAS-03",
+      "title": "切换成功后刷新账号数据",
+      "description": "授权成功后进入新账号个人中心，昵称、手机号、余币、券票和订单状态都切换为新账号数据，并展示成功提示。",
+      "pageId": "c03",
+      "moduleId": "success-toast",
+      "moduleTitle": "切换成功提示",
+      "moduleSelector": ".toast",
+      "elementTitle": "",
+      "elementSelector": ""
+    },
+    {
+      "id": "req-cas-04",
+      "code": "REQ-CAS-04",
+      "title": "授权失败保持原账号",
+      "description": "用户拒绝授权或授权失败时保留原账号数据，页面展示失败提示，并允许用户再次点击切换账号重新发起流程。",
+      "pageId": "c04",
+      "moduleId": "failure-toast",
+      "moduleTitle": "切换失败提示",
+      "moduleSelector": ".toast.fail",
+      "elementTitle": "",
+      "elementSelector": ""
+    },
+    {
+      "id": "req-1779291670301",
+      "code": "REQ-CAS-05",
+      "title": "不允许",
+      "description": "当用户点击不允许按钮时，组件消失，页面提示：手机号授权失败",
+      "pageId": "c02",
+      "moduleId": "phone-sheet",
+      "moduleTitle": "手机号选择弹层",
+      "moduleSelector": ".wechat-phone-sheet",
+      "elementTitle": "不允许",
+      "elementSelector": "button.deny-btn"
+    }
+  ]
+}
