@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>在线反馈列表</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <main class="app-screen">
+    <div class="status-bar"><span>9:41</span><span class="status-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></span></div>
+    <nav class="navbar"><button class="nav-action"><i class="fa-solid fa-chevron-left"></i></button><h1>在线反馈</h1><button class="nav-action"><i class="fa-solid fa-sliders"></i></button></nav>
+    <section class="page-scroll">
+      <div class="filter-tabs"><span class="active">全部<b class="tab-count">6</b></span><span class="is-urgent" data-count="3">待处理</span><span>处理中<b class="tab-count">2</b></span><span>已关闭<b class="tab-count">1</b></span></div>
+      <section class="card search-card">
+        <div class="search-form">
+          <label class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="search" placeholder="订单号 / 手机号 / 设备编号 / 反馈内容"></label>
+          <button class="search-submit">查询</button>
+        </div>
+      </section>
+      <article class="feedback-card">
+        <div class="feedback-head"><h2>设备没反应</h2><span class="status-tag status-pending">待处理</span></div>
+        <p>支付后机器没有启动，屏幕没有变化。</p>
+        <div class="meta-row"><span>A-103 小火车闸机</span><span>DD202605130026</span><span>14:27</span></div>
+      </article>
+      <article class="feedback-card">
+        <div class="feedback-head"><h2>核销后无法进场</h2><span class="status-tag status-processing">处理中</span></div>
+        <p>用户扫码核销成功，但闸机未放行，现场仍在等待。</p>
+        <div class="meta-row"><span>T-入口闸机</span><span>DD202605130019</span><span>13:52</span></div>
+      </article>
+      <article class="feedback-card">
+        <div class="feedback-head"><h2>扣款后订单异常</h2><span class="status-tag status-closed">已关闭</span></div>
+        <p>门店已核实交易状态并提交处理结果。</p>
+        <div class="meta-row"><span>售票台</span><span>DD202605120217</span><span>昨天</span></div>
+      </article>
+    </section>
+    <footer class="tabbar"><button class="tabbar-item"><i class="fa-solid fa-train-subway"></i><span>小火车</span></button><button class="tabbar-item active"><i class="fa-solid fa-comments"></i><span>反馈</span></button><button class="tabbar-item"><i class="fa-solid fa-chart-line"></i><span>数据</span></button><button class="tabbar-item"><i class="fa-regular fa-user"></i><span>我的</span></button></footer>
+  </main>
+<script src="shared/requirement-frame-picker.js"></script></body>
+</html>

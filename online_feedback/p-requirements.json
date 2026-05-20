@@ -1,0 +1,25 @@
+{
+  "updatedAt": "2026-05-21T00:00:00.000Z",
+  "requirements": [
+    {
+      "id": "ofp-management-list",
+      "code": "REQ-OFP-01",
+      "title": "P端反馈管理与筛选",
+      "description": "P端反馈管理按授权范围展示反馈数据，支持门店、设备、状态、订单号/反馈编号和日期筛选，并展示待处理、处理中、今日已关闭和已驳回统计。",
+      "pageId": "online-feedback-p",
+      "moduleId": "page-root",
+      "moduleTitle": "整页",
+      "moduleSelector": "body"
+    },
+    {
+      "id": "ofp-detail-close",
+      "code": "REQ-OFP-02",
+      "title": "P端反馈详情处理与管理关闭",
+      "description": "反馈详情侧栏展示顾客反馈、关联订单设备、处理操作和处理日志；支持提交并关闭、管理关闭、空态、加载中和无权限状态。",
+      "pageId": "online-feedback-p",
+      "moduleId": "page-root",
+      "moduleTitle": "整页",
+      "moduleSelector": "body"
+    }
+  ]
+}

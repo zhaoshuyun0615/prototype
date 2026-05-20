@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C端在线反馈一期交互原型</title>
+  <link rel="stylesheet" href="assets/online_feedback_prototype.css">
+  <link rel="stylesheet" href="shared/requirement-board.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    if (new URLSearchParams(location.search).get('embed') === '1') {
+      document.documentElement.classList.add('is-embedded');
+    }
+  </script>
+  <style>
+    html.is-embedded,
+    html.is-embedded body {
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    html.is-embedded .prototype-page {
+      min-height: auto;
+      padding: 12px 0 16px;
+      background: #ffffff;
+    }
+
+    html.is-embedded .prototype-header {
+      display: none;
+    }
+
+    html.is-embedded .state-switcher {
+      width: 375px;
+      margin: 0 auto 12px;
+      padding: 10px;
+      display: block;
+    }
+
+    html.is-embedded .switcher-title {
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    html.is-embedded .segmented {
+      gap: 6px;
+    }
+
+    html.is-embedded .segmented .btn {
+      min-height: 30px;
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+
+    html.is-embedded .canvas-row {
+      width: 375px;
+      max-width: 375px;
+      display: block;
+    }
+
+    html.is-embedded .mobile-canvas {
+      margin: 0;
+      box-shadow: none;
+    }
+  </style>
+  <script>
+    window.PROTOTYPE_REQUIREMENTS_CONFIG = {
+      storageKey: 'train-feedback-c-end-requirements',
+      dataUrl: 'c-requirements.json',
+      dataFileName: 'c-requirements.json',
+      dataSavePath: '03_prototype_github/online_feedback/c-requirements.json',
+      codePrefix: 'REQ-OFC',
+      boardTitle: 'C端在线反馈需求卡片',
+      boardDescription: '统一记录 C 端在线反馈提交、列表、状态和结果查看需求；点击卡片可定位页面或元素。',
+      pages: [{ id: 'online-feedback-c', title: 'C端在线反馈原型', modules: [{ id: 'page-root', title: '整页', selector: 'body' }] }]
+    };
+  </script>
+  <script defer src="shared/requirement-board.js"></script>
+</head>
+<body>
+  <main class="prototype-page">
+    <header class="prototype-header">
+      <div>
+        <h1>C端小程序在线反馈交互原型</h1>
+        <p>覆盖登录拦截、提交反馈、我的反馈、空态、待处理、处理中、已关闭和处理结果查看。</p>
+      </div>
+      <div class="prototype-meta"><span class="pill active">375 x 812</span><span class="pill">C端</span><span class="pill">旧版还原</span></div>
+    </header>
+
+    <section class="state-switcher">
+      <div class="switcher-title">页面状态</div>
+      <div class="segmented">
+        <button class="btn active" data-switch-target="c" data-state="entry">启动入口</button>
+        <button class="btn" data-switch-target="c" data-state="login">未登录</button>
+        <button class="btn" data-switch-target="c" data-state="form">提交反馈</button>
+        <button class="btn" data-switch-target="c" data-state="submitted">提交成功</button>
+        <button class="btn" data-switch-target="c" data-state="list">我的反馈</button>
+        <button class="btn" data-switch-target="c" data-state="empty">空状态</button>
+        <button class="btn" data-switch-target="c" data-state="detail">结果详情</button>
+      </div>
+    </section>
+
+    <section class="canvas-row">
+      <article class="mobile-canvas" aria-label="C端在线反馈状态原型">
+        <div class="mobile-status"><span>9:41</span><span>5G 100%</span></div>
+        <nav class="mobile-nav"><button class="icon-btn" title="返回"><i data-lucide="chevron-left"></i></button><h2>在线反馈</h2><button class="icon-btn" title="消息"><i data-lucide="bell"></i></button></nav>
+        <div class="mobile-body scrollable">
+          <section class="state-view active" data-state-group="c" data-state="entry">
+            <div class="notice"><i data-lucide="alert-triangle"></i><div><strong>设备启动状态异常</strong><div>系统检测到设备未正常响应，可直接提交反馈。</div></div></div>
+            <div class="card"><h3 class="section-title">订单信息</h3><div class="device-card"><div class="device-thumb"><i data-lucide="gamepad-2"></i></div><div><div class="item-title">欢乐兔扭蛋机 A-103</div><div class="item-sub">星河广场店 · 2026-05-21 14:26</div></div></div><div class="kv block"><div class="kv-row"><span>订单编号</span><strong>DD202605210026</strong></div><div class="kv-row"><span>支付方式</span><strong>兔币扣币</strong></div><div class="kv-row"><span>扣币数量</span><strong>6 兔币</strong></div><div class="kv-row"><span>启动状态</span><strong class="tag pending">异常</strong></div></div></div>
+            <div class="card"><h3 class="section-title">遇到问题了吗？</h3><p class="muted">系统已带入订单、设备和门店信息，你只需要补充现场情况。</p><div class="inline-actions"><button class="btn primary" data-switch-target="c" data-state="form"><i data-lucide="message-square-plus"></i>提交反馈</button><button class="btn" data-switch-target="c" data-state="list"><i data-lucide="receipt-text"></i>我的反馈</button></div></div>
+          </section>
+          <section class="state-view" data-state-group="c" data-state="login"><div class="permission-state"><i data-lucide="lock-keyhole"></i><strong>登录后才可使用反馈功能</strong><span>登录后将自动回到当前反馈入口，并保留订单信息。</span><button class="btn primary" data-switch-target="c" data-state="form"><i data-lucide="log-in"></i>立即登录</button></div></section>
+          <section class="state-view" data-state-group="c" data-state="form">
+            <div class="card"><h3 class="section-title">自动关联信息</h3><div class="kv"><div class="kv-row"><span>设备</span><strong>欢乐兔扭蛋机 A-103</strong></div><div class="kv-row"><span>门店</span><strong>星河广场店</strong></div><div class="kv-row"><span>订单</span><strong>DD202605210026</strong></div></div></div>
+            <div class="card"><h3 class="section-title">问题信息</h3><div class="field"><label>发生阶段</label><div class="pill-row"><span class="pill active">启动设备时</span><span class="pill">游玩过程中</span><span class="pill">游玩结束后</span><span class="pill">其他</span></div></div><div class="field"><label>问题概括</label><div class="pill-row"><span class="pill active">设备没反应</span><span class="pill">游玩结果异常</span><span class="pill">商品/奖品异常</span><span class="pill">支付/扣币疑问</span><span class="pill">其他</span></div></div><div class="field"><label>问题描述</label><textarea class="textarea">支付后机器没有启动，屏幕没有变化。</textarea></div><div class="field"><label>上传图片，最多 3 张</label><div class="upload-grid"><div class="upload-tile"><i data-lucide="image-plus"></i><span>现场图</span></div><div class="upload-tile"><i data-lucide="image-plus"></i><span>订单图</span></div><div class="upload-tile"><i data-lucide="plus"></i><span>添加</span></div></div></div><div class="field"><label>联系电话</label><input class="input" value="138****5621"></div><button class="btn primary full block" data-simulate-loading="#c-loading" data-done-group="c" data-done-state="submitted" data-toast="反馈已提交"><i data-lucide="send"></i>提交反馈</button></div>
+          </section>
+          <section class="state-view" data-state-group="c" data-state="submitted"><div class="empty-state"><i data-lucide="check-circle-2"></i><strong>反馈提交成功</strong><span>反馈编号 FK202605210018，门店人员会尽快处理。</span><div class="inline-actions" style="width:100%"><button class="btn" data-switch-target="c" data-state="list">查看列表</button><button class="btn primary" data-switch-target="c" data-state="detail">查看详情</button></div></div></section>
+          <section class="state-view" data-state-group="c" data-state="list"><div class="mobile-filter"><span class="pill active">全部</span><span class="pill">待处理</span><span class="pill">处理中</span><span class="pill">已关闭</span></div><div class="card block"><div class="list-item clickable"><div class="item-head"><div><div class="item-title">设备没反应</div><div class="item-sub">A-103 · FK202605210018 · 14:27</div></div><span class="tag pending">待处理</span></div><p class="muted">反馈已提交，门店人员尚未开始处理。</p></div><div class="list-item clickable"><div class="item-head"><div><div class="item-title">商品/奖品异常</div><div class="item-sub">W-022 · FK202605210017 · 13:52</div></div><span class="tag processing">处理中</span></div><p class="muted">门店正在核实娃娃机出口卡奖情况。</p></div><div class="list-item clickable" data-switch-target="c" data-state="detail"><div class="item-head"><div><div class="item-title">支付/扣币疑问</div><div class="item-sub">A-099 · FK202605200086 · 昨天</div></div><span class="tag closed">已关闭</span></div><p class="muted">已退还 6 兔币，工单已关闭。</p></div></div></section>
+          <section class="state-view" data-state-group="c" data-state="empty"><div class="empty-state"><i data-lucide="message-square-off"></i><strong>暂无反馈记录</strong><span>当你在订单或启动流程中提交反馈后，会在这里看到进度。</span><button class="btn primary" data-switch-target="c" data-state="entry">返回游玩订单</button></div></section>
+          <section class="state-view" data-state-group="c" data-state="detail"><div class="card"><div class="item-head"><div><div class="item-title">支付/扣币疑问</div><div class="item-sub">反馈编号 FK202605200086</div></div><span class="tag closed">已关闭</span></div><div class="status-rail block"><div class="status-node">待处理<br>12:08</div><div class="status-node">处理中<br>12:12</div><div class="status-node active">已关闭<br>12:20</div></div></div><div class="card"><h3 class="section-title">处理结果</h3><div class="notice success"><i data-lucide="check-circle-2"></i><div><strong>反馈已处理完成</strong><div>门店已退还本次扣除的 6 兔币，工单已关闭。</div></div></div><div class="kv block"><div class="kv-row"><span>结果</span><strong>已解决</strong></div><div class="kv-row"><span>处理方式</span><strong>退还兔币</strong></div><div class="kv-row"><span>处理人</span><strong>星河广场店 李明</strong></div><div class="kv-row"><span>关闭时间</span><strong>2026-05-20 12:20</strong></div></div><p class="muted">核实设备启动记录异常，已为你退还本次扣除的 6 兔币。</p></div><div class="card"><h3 class="section-title">处理进度</h3><div class="timeline"><div class="timeline-item"><div class="timeline-title">已关闭</div><div class="timeline-meta">12:20 门店提交“已解决”结果并关闭</div></div><div class="timeline-item"><div class="timeline-title">处理中</div><div class="timeline-meta">12:12 李明开始处理并联系顾客</div></div><div class="timeline-item"><div class="timeline-title">待处理</div><div class="timeline-meta">12:08 顾客提交反馈</div></div></div></div></section>
+        </div>
+        <div class="bottom-bar"><button class="bottom-item" data-switch-target="c" data-state="entry"><i data-lucide="scan-line"></i><span>游玩</span></button><button class="bottom-item active" data-switch-target="c" data-state="list"><i data-lucide="message-square"></i><span>反馈</span></button><button class="bottom-item" data-switch-target="c" data-state="login"><i data-lucide="user"></i><span>我的</span></button></div>
+      </article>
+    </section>
+  </main>
+  <div class="modal" id="c-loading"><div class="modal-panel"><div class="modal-body-inner loading-state"><div class="spinner"></div><strong>正在提交</strong><span>请稍候，系统正在写入反馈记录。</span></div></div></div>
+  <div class="toast"></div><script src="assets/online_feedback_interactions.js"></script>
+</body>
+</html>

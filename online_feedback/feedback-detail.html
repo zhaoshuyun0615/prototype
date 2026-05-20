@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>反馈详情</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <main class="app-screen">
+    <div class="status-bar"><span>9:41</span><span class="status-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></span></div>
+    <nav class="navbar"><button class="nav-action"><i class="fa-solid fa-chevron-left"></i></button><h1>反馈详情</h1><button class="nav-action"><i class="fa-solid fa-phone"></i></button></nav>
+    <section class="page-scroll">
+      <article class="detail-card">
+        <div class="feedback-head"><h2>设备没反应</h2><span class="status-tag status-pending">待处理</span></div>
+        <p>支付后机器没有启动，屏幕没有变化，用户反馈已完成扣款。</p>
+        <div class="meta-row"><span>FK202605130018</span><span>14:27</span><span>C端提交</span></div>
+      </article>
+      <section class="detail-card">
+        <h2>关联信息</h2>
+        <div class="info-row"><span>设备</span><strong>A-103 小火车闸机</strong></div>
+        <div class="info-row"><span>门店</span><strong>星河广场店</strong></div>
+        <div class="info-row"><span>订单</span><strong>DD202605130026</strong></div>
+        <div class="info-row"><span>启动状态</span><strong>启动异常</strong></div>
+        <div class="info-row"><span>用户手机</span><strong>138****5621</strong></div>
+      </section>
+      <section class="detail-card">
+        <h2>图片凭证</h2>
+        <div class="photo-grid">
+          <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=300&q=80" alt="现场设备图">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=300&q=80" alt="订单支付图">
+          <div><i class="fa-regular fa-image"></i></div>
+        </div>
+      </section>
+      <section class="detail-card">
+        <h2>处理记录</h2>
+        <div class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-[#566fff]"></span><div><strong class="text-sm">顾客提交反馈</strong><p class="!my-1">14:27 · C端小程序</p></div></div>
+      </section>
+      <section class="px-3 pb-4"><button class="primary-button"><i class="fa-solid fa-pen-to-square"></i>去处理</button></section>
+    </section>
+    <footer class="tabbar"><button class="tabbar-item"><i class="fa-solid fa-train-subway"></i><span>小火车</span></button><button class="tabbar-item active"><i class="fa-solid fa-comments"></i><span>反馈</span></button><button class="tabbar-item"><i class="fa-solid fa-chart-line"></i><span>数据</span></button><button class="tabbar-item"><i class="fa-regular fa-user"></i><span>我的</span></button></footer>
+  </main>
+<script src="shared/requirement-frame-picker.js"></script></body>
+</html>

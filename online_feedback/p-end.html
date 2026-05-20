@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>P端在线反馈一期交互原型</title>
+  <link rel="stylesheet" href="assets/online_feedback_prototype.css">
+  <link rel="stylesheet" href="shared/requirement-board.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    if (new URLSearchParams(location.search).get('embed') === '1') {
+      document.documentElement.classList.add('is-embedded');
+    }
+  </script>
+  <style>
+    html.is-embedded,
+    html.is-embedded body {
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    html.is-embedded .prototype-page {
+      min-height: auto;
+      padding: 12px;
+      background: #ffffff;
+    }
+
+    html.is-embedded .prototype-header {
+      display: none;
+    }
+
+    html.is-embedded .state-switcher {
+      max-width: none;
+      margin: 0 0 12px;
+      padding: 10px;
+    }
+
+    html.is-embedded .web-shell {
+      min-height: 690px;
+      margin: 0;
+      box-shadow: none;
+    }
+
+    html.is-embedded .web-content {
+      padding: 14px;
+    }
+
+    html.is-embedded .toolbar {
+      grid-template-columns: repeat(3, minmax(120px, 1fr));
+    }
+
+    html.is-embedded .layout-two {
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 12px;
+    }
+  </style>
+  <script>
+    window.PROTOTYPE_REQUIREMENTS_CONFIG = {
+      storageKey: 'train-feedback-p-end-requirements',
+      dataUrl: 'p-requirements.json',
+      dataFileName: 'p-requirements.json',
+      dataSavePath: '03_prototype_github/online_feedback/p-requirements.json',
+      codePrefix: 'REQ-OFP',
+      boardTitle: 'P端在线反馈需求卡片',
+      boardDescription: '统一记录 P 端反馈管理、处理、关闭和权限状态需求；点击卡片可定位页面或元素。',
+      pages: [{ id: 'online-feedback-p', title: 'P端在线反馈原型', modules: [{ id: 'page-root', title: '整页', selector: 'body' }] }]
+    };
+  </script>
+  <script defer src="shared/requirement-board.js"></script>
+</head>
+<body>
+  <main class="prototype-page">
+    <header class="prototype-header"><div><h1>P端/PC管理后台在线反馈交互原型</h1><p>补齐授权查看、筛选检索、待处理/处理中/已关闭状态、详情处理、管理关闭、处理日志、空态、加载和无权限。</p></div><div class="prototype-meta"><span class="pill active">1440 x 900</span><span class="pill">P/PC端</span><span class="pill">旧版还原</span></div></header>
+    <section class="state-switcher"><div class="switcher-title">页面状态</div><div class="segmented"><button class="btn active" data-switch-target="p" data-state="normal">反馈管理</button><button class="btn" data-switch-target="p" data-state="empty">空状态</button><button class="btn" data-switch-target="p" data-state="loading">加载中</button><button class="btn" data-switch-target="p" data-state="forbidden">无权限</button></div></section>
+    <section class="web-shell" aria-label="P端反馈管理状态原型">
+      <aside class="sidebar"><div class="brand"><i data-lucide="rabbit"></i><span>PBC 管理后台</span></div><nav class="nav-menu"><div class="nav-link"><i data-lucide="layout-dashboard"></i>经营概览</div><div class="nav-link"><i data-lucide="receipt-text"></i>订单管理</div><div class="nav-link"><i data-lucide="cpu"></i>设备管理</div><div class="nav-link active"><i data-lucide="message-square-warning"></i>反馈管理</div><div class="nav-link"><i data-lucide="users"></i>权限管理</div></nav></aside>
+      <div class="web-main"><div class="web-topbar"><div><h2 class="page-title">反馈管理</h2><div class="muted">查看和处理授权范围内的顾客反馈</div></div><div class="action-row"><button class="btn" data-switch-target="p" data-state="loading"><i data-lucide="refresh-cw"></i>刷新</button><button class="btn" data-toast="字段设置已打开"><i data-lucide="settings"></i>字段设置</button></div></div>
+        <div class="web-content">
+          <section class="state-view active" data-state-group="p" data-state="normal"><div class="stats-row"><div class="stat-card"><div class="stat-label">待处理</div><div class="stat-value">18</div></div><div class="stat-card"><div class="stat-label">处理中</div><div class="stat-value">9</div></div><div class="stat-card"><div class="stat-label">今日已关闭</div><div class="stat-value">61</div></div><div class="stat-card"><div class="stat-label">已驳回</div><div class="stat-value">6</div></div></div>
+            <div class="layout-two"><div><div class="card"><div class="toolbar"><select class="select"><option>全部门店</option><option>星河广场店</option><option>万象天地店</option></select><select class="select"><option>全部设备</option><option>A-103</option><option>W-022</option><option>A-099</option></select><select class="select"><option>全部状态</option><option>待处理</option><option>处理中</option><option>已关闭</option></select><input class="input" value="订单号 / 反馈编号"><input class="input" value="2026-05-21"><button class="btn primary" data-toast="筛选结果已更新"><i data-lucide="search"></i>查询</button></div><div class="segmented"><button class="btn active" data-flow-target="p-table" data-flow="all">全部</button><button class="btn" data-flow-target="p-table" data-flow="pending">待处理</button><button class="btn" data-flow-target="p-table" data-flow="processing">处理中</button><button class="btn" data-flow-target="p-table" data-flow="closed">已关闭</button></div></div>
+              <div class="table-wrap block flow-view active" data-flow-group="p-table" data-flow="all"><table><thead><tr><th>反馈编号</th><th>问题概括</th><th>门店/设备</th><th>订单</th><th>状态</th><th>处理人</th><th>提交时间</th><th>操作</th></tr></thead><tbody><tr class="row-selected" data-select-row="右侧已切换到待处理反馈"><td>FK202605210018</td><td>设备没反应</td><td>星河广场店 / A-103</td><td>DD202605210026</td><td><span class="tag pending">待处理</span></td><td>-</td><td>14:27</td><td><button class="btn text">查看</button></td></tr><tr data-select-row="右侧已切换到处理中反馈"><td>FK202605210017</td><td>商品/奖品异常</td><td>星河广场店 / W-022</td><td>DD202605210019</td><td><span class="tag processing">处理中</span></td><td>李明</td><td>13:52</td><td><button class="btn text">查看</button></td></tr><tr data-select-row="右侧已切换到已关闭反馈"><td>FK202605200086</td><td>支付/扣币疑问</td><td>万象天地店 / A-099</td><td>DD202605200011</td><td><span class="tag closed">已关闭</span></td><td>王洁</td><td>昨天</td><td><button class="btn text">查看</button></td></tr></tbody></table></div><div class="table-wrap block flow-view" data-flow-group="p-table" data-flow="pending"><table><tbody><tr><td>FK202605210018</td><td>设备没反应</td><td><span class="tag pending">待处理</span></td><td><button class="btn text">查看</button></td></tr></tbody></table></div><div class="table-wrap block flow-view" data-flow-group="p-table" data-flow="processing"><table><tbody><tr><td>FK202605210017</td><td>商品/奖品异常</td><td><span class="tag processing">处理中</span></td><td><button class="btn text">查看</button></td></tr></tbody></table></div><div class="table-wrap block flow-view" data-flow-group="p-table" data-flow="closed"><table><tbody><tr><td>FK202605200086</td><td>支付/扣币疑问</td><td><span class="tag closed">已关闭</span></td><td><button class="btn text">查看</button></td></tr></tbody></table></div></div>
+              <aside class="side-panel" aria-label="反馈详情侧栏"><div class="panel-head"><div><strong>反馈详情</strong><div class="item-sub">FK202605210018</div></div><span class="tag pending">待处理</span></div><div class="panel-body"><div class="card"><h3 class="section-title">顾客反馈</h3><div class="kv"><div class="kv-row"><span>发生阶段</span><strong>启动设备时</strong></div><div class="kv-row"><span>问题概括</span><strong>设备没反应</strong></div><div class="kv-row"><span>联系电话</span><strong>138****5621</strong></div></div><p class="muted">支付后机器没有启动，屏幕没有变化。</p></div><div class="card"><h3 class="section-title">关联信息</h3><div class="kv"><div class="kv-row"><span>门店</span><strong>星河广场店</strong></div><div class="kv-row"><span>设备</span><strong>A-103 扭蛋机</strong></div><div class="kv-row"><span>订单</span><strong>DD202605210026</strong></div><div class="kv-row"><span>启动记录</span><strong class="tag pending">启动异常</strong></div></div></div><div class="card"><h3 class="section-title">处理操作</h3><div class="field"><label>处理结果</label><select class="select"><option>已解决</option><option>已驳回</option><option>继续处理中</option></select></div><div class="field"><label>处理方式</label><select class="select"><option>退还兔币</option><option>发起退款</option><option>现场处理</option><option>其他</option></select></div><div class="field"><label>处理说明</label><textarea class="textarea">核实设备启动记录异常，建议退还本次扣除兔币。</textarea></div><div class="inline-actions"><button class="btn danger" data-open-modal="#close-modal"><i data-lucide="x-octagon"></i>管理关闭</button><button class="btn primary" data-simulate-loading="#p-loading-modal" data-toast="处理结果已提交，工单已关闭"><i data-lucide="check-circle-2"></i>提交并关闭</button></div></div><div class="card"><h3 class="section-title">处理日志</h3><div class="timeline"><div class="timeline-item"><div class="timeline-title">顾客提交反馈</div><div class="timeline-meta">14:27 · C端小程序</div></div><div class="timeline-item"><div class="timeline-title">系统识别启动异常</div><div class="timeline-meta">14:27 · 设备启动记录</div></div></div></div></div></aside></div></section>
+          <section class="state-view" data-state-group="p" data-state="empty"><div class="card"><div class="empty-state"><i data-lucide="search-x"></i><strong>暂无符合条件的反馈</strong><span>可调整门店、设备、订单、状态或时间后重新查询。</span><button class="btn primary" data-switch-target="p" data-state="normal">返回全部反馈</button></div></div></section>
+          <section class="state-view" data-state-group="p" data-state="loading"><div class="card"><div class="loading-state"><div class="spinner"></div><strong>正在加载反馈记录</strong><span>系统正在校验权限并获取授权范围内的数据。</span><button class="btn" data-switch-target="p" data-state="normal">加载完成</button></div></div></section>
+          <section class="state-view" data-state-group="p" data-state="forbidden"><div class="card"><div class="permission-state"><i data-lucide="shield-alert"></i><strong>暂无反馈查看权限</strong><span>当前账号没有反馈管理查看或处理权限，请联系系统管理员配置。</span></div></div></section>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="modal" id="p-loading-modal"><div class="modal-panel"><div class="modal-body-inner loading-state"><div class="spinner"></div><strong>正在提交处理结果</strong><span>系统正在写入处理日志并关闭工单。</span></div></div></div>
+  <div class="modal" id="close-modal"><div class="modal-panel"><div class="modal-head"><strong>管理关闭工单</strong><button class="icon-btn" data-close-modal><i data-lucide="x"></i></button></div><div class="modal-body-inner"><div class="notice"><i data-lucide="alert-triangle"></i><div>管理关闭会直接结束工单，必须填写关闭原因并留痕。</div></div><div class="field"><label>关闭原因</label><textarea class="textarea">线下已完成处理，用户现场确认无异议。</textarea></div></div><div class="modal-foot"><button class="btn" data-close-modal>取消</button><button class="btn danger" data-close-modal data-toast="工单已管理关闭并记录日志">确认关闭</button></div></div></div>
+  <div class="toast"></div><script src="assets/online_feedback_interactions.js"></script>
+</body>
+</html>

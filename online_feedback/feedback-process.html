@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>处理反馈</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <main class="app-screen">
+    <div class="status-bar"><span>9:41</span><span class="status-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></span></div>
+    <nav class="navbar"><button class="nav-action"><i class="fa-solid fa-chevron-left"></i></button><h1>处理反馈</h1><span></span></nav>
+    <section class="page-scroll">
+      <div class="notice-card"><i class="fa-solid fa-circle-info mt-0.5"></i><span>提交已解决或已驳回后，工单直接关闭，顾客在 C 端查看结果。</span></div>
+      <section class="form-card">
+        <label>结果类型</label>
+        <div class="choice-row"><span class="choice-pill active">已解决</span><span class="choice-pill">已驳回</span></div>
+        <label>处理方式</label>
+        <div class="choice-row"><span class="choice-pill active">退还兔币</span><span class="choice-pill">发起退款</span><span class="choice-pill">现场处理</span><span class="choice-pill">其他</span></div>
+        <label>退还数量</label>
+        <div class="fake-input">6 兔币</div>
+        <label>处理说明</label>
+        <div class="fake-textarea">核实设备启动记录异常，已为用户退还本次扣除的 6 兔币。</div>
+        <label>联系记录</label>
+        <div class="fake-textarea min-h-[58px]">14:32 已电话联系用户，说明处理方式。</div>
+        <button class="primary-button"><i class="fa-solid fa-circle-check"></i>提交并关闭工单</button>
+      </section>
+    </section>
+    <footer class="tabbar"><button class="tabbar-item"><i class="fa-solid fa-train-subway"></i><span>小火车</span></button><button class="tabbar-item active"><i class="fa-solid fa-comments"></i><span>反馈</span></button><button class="tabbar-item"><i class="fa-solid fa-chart-line"></i><span>数据</span></button><button class="tabbar-item"><i class="fa-regular fa-user"></i><span>我的</span></button></footer>
+  </main>
+<script src="shared/requirement-frame-picker.js"></script></body>
+</html>

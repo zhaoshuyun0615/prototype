@@ -1,0 +1,55 @@
+{
+  "updatedAt": "2026-05-21T00:00:00.000Z",
+  "requirements": [
+    {
+      "id": "tf-b-home",
+      "code": "REQ-BTF-01",
+      "title": "B端首页增加在线反馈入口与待办提示",
+      "description": "小火车首页保留当前权限逻辑下的功能入口，并新增在线反馈功能入口和待处理反馈提示，帮助门店人员快速进入反馈处理。",
+      "pageId": "btf-home",
+      "moduleId": "page-root",
+      "moduleTitle": "整页",
+      "moduleSelector": "body"
+    },
+    {
+      "id": "tf-b-list",
+      "code": "REQ-BTF-02",
+      "title": "B端反馈列表支持门店权限与状态筛选",
+      "description": "在线反馈列表按当前门店处理权限获取数据，支持全部、待处理、处理中、已关闭等状态筛选，并展示各状态数量。",
+      "pageId": "btf-list",
+      "moduleId": "page-root",
+      "moduleTitle": "整页",
+      "moduleSelector": "body"
+    },
+    {
+      "id": "tf-b-detail",
+      "code": "REQ-BTF-03",
+      "title": "B端反馈详情展示关联信息和凭证",
+      "description": "反馈详情页展示用户反馈、反馈编号、提交时间、订单、设备、支付与启动状态、图片凭证和处理记录，并提供联系顾客与去处理入口。",
+      "pageId": "btf-detail",
+      "moduleId": "page-root",
+      "moduleTitle": "整页",
+      "moduleSelector": "body"
+    },
+    {
+      "id": "tf-b-process",
+      "code": "REQ-BTF-04",
+      "title": "B端处理反馈提交后直接关闭工单",
+      "description": "处理方式支持退还兔币、发起退款、现场处理、其他。门店人员填写处理说明和内部备注，提交已解决或已驳回后工单直接关闭。",
+      "pageId": "btf-process",
+      "moduleId": "page-root",
+      "moduleTitle": "整页",
+      "moduleSelector": "body"
+    },
+    {
+      "id": "tf-b-states",
+      "code": "REQ-BTF-05",
+      "title": "B端关键状态覆盖",
+      "description": "B端覆盖处理成功、空状态、加载中和无门店权限，避免用户误判为空数据或无权限。",
+      "pageId": "btf-submitted",
+      "moduleId": "page-root",
+      "moduleTitle": "整页",
+      "moduleSelector": "body"
+    }
+  ]
+}

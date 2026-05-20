@@ -1,0 +1,25 @@
+{
+  "updatedAt": "2026-05-21T00:00:00.000Z",
+  "requirements": [
+    {
+      "id": "ofc-submit-flow",
+      "code": "REQ-OFC-01",
+      "title": "C端反馈提交链路",
+      "description": "C端从异常订单入口进入在线反馈，未登录时先登录，提交页自动带入订单、设备、门店和联系电话，并支持问题描述与图片上传。",
+      "pageId": "online-feedback-c",
+      "moduleId": "page-root",
+      "moduleTitle": "整页",
+      "moduleSelector": "body"
+    },
+    {
+      "id": "ofc-result-view",
+      "code": "REQ-OFC-02",
+      "title": "C端反馈列表与结果查看",
+      "description": "我的反馈支持状态查看、空态提示和结果详情；已关闭反馈展示处理结果、处理方式、处理人、关闭时间和处理进度。",
+      "pageId": "online-feedback-c",
+      "moduleId": "page-root",
+      "moduleTitle": "整页",
+      "moduleSelector": "body"
+    }
+  ]
+}
