@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>微信手机号选择</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/account-switch.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fafafa; }
+    .app { width: 375px; height: 812px; position: relative; overflow: hidden; background: #fafafa url('assets/images/xhc-min-bg.jpg') center top / 100% 296px no-repeat; }
+    .ios { height: 44px; padding: 12px 22px 0; display: flex; justify-content: space-between; background: transparent; color: #111; font-size: 13px; font-weight: 700; position: relative; z-index: 4; }
+    .nav { height: 48px; padding: 0 14px; display: grid; grid-template-columns: 74px 1fr 74px; align-items: center; position: relative; z-index: 4; }
+    .capsule { display: flex; align-items: center; gap: 10px; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.72); backdrop-filter: blur(8px); color: #111; font-size: 13px; }
+    .mine-dim { position: absolute; inset: 0; z-index: 2; background: rgba(0,0,0,.45); }
+    .wechat-phone-sheet { position: absolute; bottom: 0; left: 0; right: 0; z-index: 10; background: #f2f2f7; border-radius: 20px 20px 0 0; padding: 16px 16px 28px; box-shadow: 0 -10px 32px rgba(0,0,0,.12); }
+    .sheet-app-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .sheet-app-brand { display: flex; align-items: center; gap: 6px; }
+    .sheet-app-logo { width: 22px; height: 22px; border-radius: 4px; object-fit: cover; }
+    .sheet-app-name { font-size: 13px; font-weight: 500; color: #111; }
+    .sheet-info-icon { width: 22px; height: 22px; border-radius: 50%; border: 1px solid #c8c8cc; display: grid; place-items: center; color: #8e8e93; font-size: 11px; cursor: pointer; }
+    .sheet-title { font-size: 18px; font-weight: 700; color: #111; text-align: center; line-height: 26px; margin-bottom: 8px; }
+    .sheet-desc { font-size: 12px; color: #8e8e93; text-align: center; line-height: 18px; margin-bottom: 16px; }
+    .phone-option-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
+    .phone-option-btn { width: 100%; background: #fff; border: none; border-radius: 12px; padding: 14px 16px; cursor: pointer; text-align: center; }
+    .phone-option-number { font-size: 17px; font-weight: 500; color: #111; line-height: 24px; }
+    .phone-option-tag { font-size: 11px; color: #8e8e93; margin-top: 2px; line-height: 16px; }
+    .deny-btn { width: 100%; background: #fff; border: none; border-radius: 12px; padding: 14px 16px; font-size: 17px; font-weight: 500; color: #111; cursor: pointer; margin-top: 10px; }
+    .manage-link { display: block; text-align: center; margin-top: 16px; font-size: 13px; color: #007aff; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <div class="ios">
+      <span>9:41</span>
+      <span><i class="fa-solid fa-signal"></i> 5G 100%</span>
+    </div>
+
+    <nav class="nav">
+      <div class="capsule">
+        <i class="fa-solid fa-chevron-left"></i>
+        <span></span>
+        <i class="fa-solid fa-house"></i>
+      </div>
+      <h1></h1>
+      <div></div>
+    </nav>
+
+    <div class="mine-dim"></div>
+
+    <div class="wechat-phone-sheet">
+      <div class="sheet-app-header">
+        <div class="sheet-app-brand">
+          <img class="sheet-app-logo" src="assets/images/xhc-auth-logo.png" alt="悦行娱乐">
+          <span class="sheet-app-name">悦行娱乐</span>
+        </div>
+        <div class="sheet-info-icon">
+          <i class="fa-solid fa-info"></i>
+        </div>
+      </div>
+
+      <div class="sheet-title">申请获取并验证你的手机号</div>
+      <div class="sheet-desc">方便你快速使用手机号作为登录帐号进行登录和密码找回</div>
+
+      <div class="phone-option-list">
+        <button class="phone-option-btn" type="button" onclick="location.href='c03-switch-success.html'">
+          <div class="phone-option-number">188****0036</div>
+          <div class="phone-option-tag">微信绑定号码</div>
+        </button>
+        <button class="phone-option-btn" type="button" onclick="location.href='c03-switch-success.html'">
+          <div class="phone-option-number">153****8302</div>
+        </button>
+        <button class="phone-option-btn" type="button" onclick="location.href='c03-switch-success.html'">
+          <div class="phone-option-number">187****2007</div>
+        </button>
+      </div>
+
+      <button class="deny-btn" type="button" onclick="location.href='c04-switch-failed.html'">不允许</button>
+
+      <a class="manage-link">管理号码</a>
+    </div>
+  </main>
+</body>
+</html>

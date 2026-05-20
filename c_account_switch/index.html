@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>账号切换极简原型</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/account-switch.css">
+  <link rel="stylesheet" href="shared/requirement-board.css">
+  <script>
+    window.PROTOTYPE_REQUIREMENTS_CONFIG = {
+      storageKey: 'c-account-switch-unified-requirements',
+      codePrefix: 'REQ-CAS',
+      boardTitle: '账号切换需求卡片',
+      boardDescription: '统一记录所有页面、模块对应的需求描述，并可点击定位到绑定位置。',
+      pages: [
+        { id: 'c01', title: '01 入口与授权', modules: [
+          { id: 'switch-button', title: '切换账号入口', selector: '.account-switch-chip' },
+          { id: 'switch-sheet', title: '切换账号弹窗', selector: '.switch-sheet' },
+          { id: 'switch-agreement', title: '协议提示', selector: '.switch-agreement' }
+        ] },
+        { id: 'c02', title: '02 微信授权手机号', modules: [
+          { id: 'phone-sheet', title: '手机号选择弹层', selector: '.wechat-phone-sheet' },
+          { id: 'app-brand', title: '授权主体名称与 Logo', selector: '.sheet-app-brand' },
+          { id: 'phone-options', title: '可选手机号列表', selector: '.phone-option-list' },
+          { id: 'deny-action', title: '不允许按钮', selector: '.deny-btn' }
+        ] },
+        { id: 'c03', title: '03 新账号数据已刷新', modules: [
+          { id: 'new-user', title: '新账号身份信息', selector: '.min-head-user' },
+          { id: 'new-assets', title: '新账号资产数据', selector: '.min-game' },
+          { id: 'success-toast', title: '切换成功提示', selector: '.toast' }
+        ] },
+        { id: 'c04', title: '04 授权失败', modules: [
+          { id: 'origin-user', title: '原账号信息保留', selector: '.min-head-user' },
+          { id: 'failure-toast', title: '切换失败提示', selector: '.toast.fail' },
+          { id: 'retry-button', title: '重新切换入口', selector: '.account-switch-chip' }
+        ] }
+      ],
+      defaultRequirements: [
+        { id: 'req-cas-01', code: 'REQ-CAS-01', title: '切换账号入口可感知', description: '个人中心手机号旁展示“切换账号”入口，用户点击后进入切换登录手机号弹窗。', pageId: 'c01', moduleId: 'switch-button' },
+        { id: 'req-cas-02', code: 'REQ-CAS-02', title: '微信手机号授权组件', description: '用户在切换登录手机号时，通过微信官方手机号能力选择并验证当前微信可用手机号，用于匹配并切换会员账号。', pageId: 'c02', moduleId: 'phone-sheet' },
+        { id: 'req-cas-03', code: 'REQ-CAS-03', title: '切换成功后刷新账号数据', description: '授权成功后进入新账号个人中心，昵称、手机号、余币、券票和订单状态都切换为新账号数据，并展示成功提示。', pageId: 'c03', moduleId: 'success-toast' },
+        { id: 'req-cas-04', code: 'REQ-CAS-04', title: '授权失败保持原账号', description: '用户拒绝授权或授权失败时保留原账号数据，页面展示失败提示，并允许用户再次点击切换账号重新发起流程。', pageId: 'c04', moduleId: 'failure-toast' }
+      ]
+    };
+  </script>
+  <script defer src="shared/requirement-board.js"></script>
+</head>
+<body>
+  <main class="proto-wall">
+    <header class="wall-head">
+      <div>
+        <h1>账号切换极简原型</h1>
+        <p>只保留主路径：个人中心入口、微信手机号授权、个人中心数据刷新、授权失败。</p>
+      </div>
+      <div class="wall-badges"><span>微信授权手机号</span><span>一步切换</span><span>无账号组</span></div>
+    </header>
+    <section class="prototype-workspace">
+      <div class="prototype-canvas" aria-label="原型页面区域">
+        <section class="proto-grid">
+          <article class="proto-card" data-page-id="c01"><div class="proto-title">01 入口与授权</div><div class="phone-frame"><iframe src="c01-mine-switch-sheet.html" title="入口与授权" data-page-id="c01"></iframe></div></article>
+          <article class="proto-card" data-page-id="c02"><div class="proto-title">02 微信授权手机号</div><div class="phone-frame"><iframe src="c02-switch-confirm.html" title="微信授权手机号" data-page-id="c02"></iframe></div></article>
+          <article class="proto-card" data-page-id="c03"><div class="proto-title">03 新账号数据已刷新</div><div class="phone-frame"><iframe src="c03-switch-success.html" title="新账号数据已刷新" data-page-id="c03"></iframe></div></article>
+          <article class="proto-card" data-page-id="c04"><div class="proto-title">04 授权失败</div><div class="phone-frame"><iframe src="c04-switch-failed.html" title="授权失败" data-page-id="c04"></iframe></div></article>
+        </section>
+      </div>
+      <aside class="requirement-panel" aria-label="需求卡片区域">
+        <section class="requirement-board" data-requirement-board>
+          <div class="requirement-board-head">
+            <div>
+              <span>REQ-CAS</span>
+              <h2>账号切换需求卡片</h2>
+              <p>统一记录所有页面、模块对应的需求描述，并可点击定位到绑定位置。</p>
+            </div>
+            <div class="requirement-head-actions">
+              <button class="requirement-add" type="button"><i class="fa-solid fa-plus"></i>新增需求</button>
+              <button class="requirement-pick" type="button"><i class="fa-solid fa-crosshairs"></i>点选模块</button>
+            </div>
+          </div>
+          <div class="requirement-tools">
+            <label><i class="fa-solid fa-magnifying-glass"></i><input type="search" placeholder="查询需求、页面或模块"></label>
+            <select class="requirement-page-filter" aria-label="按页面筛选"></select>
+          </div>
+          <div class="requirement-list"></div>
+          <div class="requirement-empty">未查询到需求卡片</div>
+        </section>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
